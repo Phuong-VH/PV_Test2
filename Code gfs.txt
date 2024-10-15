@@ -1,0 +1,14 @@
+git lfs install
+
+git lfs init
+
+git lfs track "*.npz"
+
+git lfs push --all origin main
+
+git add .
+
+git commit -m "large file to github"
+
+git push -u origin main
+
