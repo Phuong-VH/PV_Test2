@@ -206,24 +206,9 @@ def cnn(x):
     print('score: ', -score, 'values: ', func, 'time: ', t2_0-t1_0)
     return -score 
 
-# problem_dict = {
-#     "bounds": FloatVar(lb=(1,16,16,16,2,2,2,0.2,0.2,0.2,2,2,2,32,0.2), ub=(5,64,64,64,5,5,5,0.5,0.5,0.5,5,5,5,128,0.5)),
-#     "minmax": "max",
-#     "obj_func": cnn,
-#     "log_to": "file",
-#     "log_file": "result.log",
-# }
-
 bounds = [(1,5),(16,64),(16,64),(16,64),(2,5),(2,5),(2,5),(0.2,0.5),(0.2,0.5),(0.2,0.5),(2,5),(2,5),(2,5),(32,128),(0.2,0.5)]
 NDim = 15;
 s = QPSO(sphere, NParticle, NDim, bounds, MaxIters)
 s.update(callback=log, interval=100)
 print("Found best position: {0}".format(s.gbest))
-
-# m = PSO.OriginalPSO(epoch=50, pop_size=42)
-# g_best = m.solve(problem_dict)
-# print(f"Solution: {g_best.solution}, Fitness: {g_best.target.fitness}")
-# print(f"Solution: {model.g_best.solution}, Fitness: {model.g_best.target.fitness}")
-
-# y_test_dense = tf.convert_to_tensor(y_test_onehot, dtype=tf.float32)
 
