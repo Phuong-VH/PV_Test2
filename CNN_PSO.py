@@ -206,6 +206,18 @@ def cnn(x):
     print('score: ', -score, 'values: ', func, 'time: ', t2_0-t1_0)
     return -score 
 
+def sphere(args):
+    f = sum([np.power(x, 2.) for x in args])
+    return f
+
+
+def log(s):
+    best_value = [p.best_value for p in s.particles()]
+    best_value_avg = np.mean(best_value)
+    best_value_std = np.std(best_value)
+    print("{0: >5}  {1: >9}  {2: >9}  {3: >9}".format("Iters.", "Best", "Best(Mean)", "Best(STD)"))
+    print("{0: >5}  {1: >9.3E}  {2: >9.3E}  {3: >9.3E}".format(s.iters, s.gbest_value, best_value_avg, best_value_std))
+
 bounds = [(1,5),(16,64),(16,64),(16,64),(2,5),(2,5),(2,5),(0.2,0.5),(0.2,0.5),(0.2,0.5),(2,5),(2,5),(2,5),(32,128),(0.2,0.5)]
 NDim = 15;
 s = QPSO(sphere, NParticle, NDim, bounds, MaxIters)
